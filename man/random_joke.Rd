@@ -4,7 +4,7 @@
 \alias{random_joke}
 \title{Random joke}
 \usage{
-random_joke(data = c("stupidstuff.json", "wocka.json"))
+random_joke(data = c("stupidstuff.json", "wocka.json"), categories)
 }
 \arguments{
 \item{data}{database to use}
