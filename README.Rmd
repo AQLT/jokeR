@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  fig.align = "center"
+)
+```
+
+# jokeR
+
+Database from https://github.com/taivop/joke-dataset
+
+## Installation
+
+```{r, eval = FALSE}
+# Install development version from GitHub
+# install.packages("devtools")
+devtools::install_github("AQLT/jokeR")
+```
+
+## Usage
+
+Add to your `.Rprofile` (`file.edit("~/.Rprofile")`):
+
+```{r, eval = FALSE}
+.First <- function() {
+    cat("Joke of the day:\n")
+    jokeR::random_joke()
+}
+```
