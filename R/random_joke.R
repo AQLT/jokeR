@@ -12,16 +12,18 @@ random_joke <- function(data = c("stupidstuff.json","wocka.json"),
     data_path <- system.file("extdata", data, package = "jokeR")
 
     json_data <- jsonlite::fromJSON(txt = data_path)
+    json_data$data <- sub("\\.json", "", data)
     if (!missing(categories)) {
         json_data <- json_data[json_data$category %in% categories, ]
     }
-    if (nrow(json_data) > 0){
-        random_joke <- sample(seq_len(nrow(json_data)), 1)
-        cat("Random joke from ",
-            sub("\\.json", "", data),
-            ":\n", sep = "")
-        cat(json_data[random_joke, "body"])
+    if (nrow(json_data) > 0) {
+        random_joke_i <- sample(seq_len(nrow(json_data)), 1)
+        random_joke <- json_data[random_joke_i, ]
+    }else{
+        random_joke <- json_data
     }
+    class(random_joke) <- c("random_joke", class(random_joke))
+    random_joke
 }
 #' Joke categories
 #'
@@ -53,3 +55,13 @@ joke_categories <- function(){
 # data_path <- "inst/extdata/wocka.json"
 # json_data <- jsonlite::fromJSON(txt = data_path)
 # dput(sort(unique(json_data$category)))
+
+#' @export
+print.random_joke <- function(x, ...){
+    if (nrow(x) > 0) {
+        cat("Random joke from ", x$data, ":\n", sep = "")
+        cat(x$body)
+        cat("\n")
+    }
+    invisible(x)
+}
