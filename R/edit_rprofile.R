@@ -12,7 +12,7 @@ edit_rprofile.site <- function(create_file = FALSE){
             file.create(file_path)
         }else{
             stop(paste(file_path,
-                       "doesn't exist: use 'create_file = FALSE'",
+                       "doesn't exist: use 'create_file = TRUE'",
                        "to create it"))
         }
     }
