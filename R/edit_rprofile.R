@@ -6,7 +6,7 @@
 #'@export
 edit_rprofile.site <- function(create_file = FALSE){
     site_path = R.home(component = "home")
-    file_path = file.path(site_path, "etc", "Rprofile.site")
+    file_path = file.path(site_path, "etc", ".Rprofile.site")
     if (!file.exists(file_path)) {
         if (create_file) {
             file.create(file_path)
