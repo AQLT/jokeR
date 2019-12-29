@@ -44,7 +44,7 @@ message each time you open RStudio (thanks
 ``` r
 setHook("rstudio.sessionInit", function(newSession) {
   if (newSession){
-    jokeR::random_joke()
+    print(jokeR::random_joke())
   }
 }, action = "append")
 ```
@@ -53,7 +53,7 @@ Otherwise you can also change the `.First()` function:
 
 ``` r
 .First <- function() {
-  jokeR::random_joke()
+  print(jokeR::random_joke())
 }
 ```
 
